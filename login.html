@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+include'connect.php'
+ <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <title>Login page</title>
+	<style>
+		
+		body{
+			margin:0;
+		}
+
+		.bg-styling{
+      height: 500px;
+      background-image: url(img/back.jpg); 
+      background-repeat:no-repeat; 
+      background-position: center; 
+      background-size:cover;
+        }
+		
+		.login{
+			font-size: 45px;
+			color: #7695cb;
+			margin: 65px 0 0 70px;
+		}
+		
+		.fName-block{
+			margin: 20px 0;
+		}
+		
+		.other-input-block{
+			margin:10px 0px;
+		}
+		
+		.input-heading{
+			font-size: 16px;
+			font-weight: bold;
+			margin: 10px;
+			display:inline;
+		}
+		
+		.input-box{
+			margin: 9px 0 0 12px;
+			width: 90%;
+			padding: 5px 0px;
+		}
+		
+		.login-button{
+			background: grey;
+			color: black;
+			margin: 24px 0 0 115px;
+			width: 30%;
+			height: 35px;
+			font-size: 20px;
+		}
+		
+		.margin-heading{
+			margin-right:50px;
+		}
+		
+	</style>
+
+
+
+<?php
+
+if(isset($_POST["insert"]))
+{
+	
+	$email=$_POST["emailid"];
+	$pwd=$_POST["password"];
+	$q="insert into login (l_id,pswd)values('".$emailid."','".$password."');
+	$sql=pg_query($q);
+	if($sql)
+	{
+		echo("insert successfully");
+	}
+}
+
+?>
+<body class="bg-styling">
+<h1 class="login">Login</h1>
+
+
+<div class="other-input-block">
+<p class="input-heading margin-heading">Email:</p> 
+<input class="input-box" type="text" name="l_id" placeholder="Email:"><br>
+</div>
+
+<div class="other-input-block">
+<p class="input-heading">Password:</p> 
+<input class="input-box" type="text" name="pswd" placeholder="Password:"><br>
+</div>
+
+<button class="login-button">Login</button>
+
+</body>
+</html>
